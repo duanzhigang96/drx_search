@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+This is Home Page!
+<hr>
+<div id="showdata">
+
+</div>
+<hr>
+
+<a href="/datalist">thymeleafTest</a>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type:"post",
+            dataType: "json",
+            url:"/home",
+            success:function(data) {
+                var html = "";
+               for (var i = 0;i<data.length;i++) {
+                   html += '<li>';
+                   html += data[i].name;
+                   html+="</li>";
+               }
+                $("#showdata").html(html);
+            }
+        });
+    });
+</script>
+</html>
