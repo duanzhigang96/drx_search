@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/js/search/search.js"></script>
+</head>
+<body onscroll="scrollSearchContent()">
+<div id="search_title">
+    <div id="logo-box" class="logo-box" >
+        <img id="logo" class="show-logo" src="/image/DRX.png"/>
+    </div>
+    <div id="search_container" class="search_container">
+        <div id="search-icon" class="search-icon"></div>
+        <input id="search_input" onfocus="searchReady()" class="search_input" placeholder="在 Google 上搜索，或者输入一个网址" autocomplete="off" tabindex="-1" type="url" aria-hidden="true">
+
+    </div>
+</div>
+<div id="search_content" class="search_content" style="display: none"></div>
+</body>
+</html>

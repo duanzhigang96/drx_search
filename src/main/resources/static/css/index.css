@@ -1,0 +1,86 @@
+.index_content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+.search_title{
+    position: fixed;
+    margin: 0 auto;
+    width: 100%;
+    background: white;
+}
+.box-shadow-title{
+    box-shadow: 0px 0px 1px 0px #fff,0px 0px 10px 1px rgb(188, 188, 188);
+}
+.logo-box{
+    margin: 100px auto 30px;
+    width: 150px;
+}
+.logo-box-search{
+    width: auto;
+    height: auto;
+    float: left;
+    position: absolute;
+}
+.show-logo{
+    /*src: url(../image/DRX.png);*/
+    /*background-position: center;*/
+    /*margin: 0 auto;*/
+    width: 150px;
+    height: 150px;
+}
+.search_container{
+    margin: 0 auto;
+    height: 44px;
+    width: 561px;
+    background: whitesmoke;
+    border-radius: 22px;
+    box-sizing: border-box;
+}
+.search_input{
+    width: 500px;
+    height: 44px;
+    margin-left: 10px;
+    padding: 0;
+    font-size: 15px;
+    border: none;
+    background: whitesmoke;
+    outline: none;
+}
+.search-icon{
+    -webkit-mask-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iIzVGNjM2OCI+PHBhdGggZD0iTTE1LjUgMTRoLS43OWwtLjI4LS4yN0E2LjQ3MSA2LjQ3MSAwIDAgMCAxNiA5LjUgNi41IDYuNSAwIDEgMCA5LjUgMTZjMS42MSAwIDMuMDktLjU5IDQuMjMtMS41N2wuMjcuMjh2Ljc5bDUgNC45OUwyMC40OSAxOWwtNC45OS01em0tNiAwQzcuMDEgMTQgNSAxMS45OSA1IDkuNVM3LjAxIDUgOS41IDUgMTQgNy4wMSAxNCA5LjUgMTEuOTkgMTQgOS41IDE0eiIvPjwvc3ZnPg==);
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 20px;
+    background-color: rgb(117, 117, 117);
+    /*bottom: 0;*/
+    /*left: 16px;*/
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+    /*top: 0;*/
+    width: 24px;
+    height: 24px;
+    float: left;
+}
+.logo{
+    margin: 15px;
+    width: 50px;
+    height: 50px;
+}
+.search_container_top{
+    margin:21px 0px 15px 80px;
+    height: 44px;
+    width: 561px;
+    background: whitesmoke;
+    border-radius: 22px;
+    box-sizing: border-box;
+}
+.search_content{
+    width: 100%;
+    height: 1000px;
+    background: whitesmoke;
+    overflow: auto;
+}
