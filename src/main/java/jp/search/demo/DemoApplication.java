@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 //@ServletComponentScan(basePackages = {"com.example.config"})
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.example.*"})
-@MapperScan(basePackages = "com.example.mapper")
+@ComponentScan(basePackages = {"jp.search.*"})
+@MapperScan(basePackages = "jp.search.mapper")
 public class DemoApplication {
 
     public static void main(String[] args) {

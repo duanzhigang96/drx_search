@@ -9,13 +9,13 @@ import org.springframework.data.solr.repository.Query;
 
 public interface SearchRepository {
 
-    SearchBean findByName(String id);
+    SearchBean findById(String id);
 
     @Query("*:*")
     Page<SearchBean> findAllWithPageable(Pageable pageable);
 
     @Highlight(prefix = "</highlight>",postfix = "</highlight>")
     @Query("*:*")
-    HighlightPage<SearchBean> findWithHighlight(Pageable pageable);
+    HighlightPage<SearchBean> findWithHighlight(Pageable pageable,String item);
 
 }

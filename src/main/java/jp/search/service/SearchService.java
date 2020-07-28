@@ -17,8 +17,8 @@ public class SearchService {
     @Autowired
     private SearchRepository searchRepository;
 
-    public SearchBean searchByName(String name) {
-        return searchRepository.findByName(name);
+    public SearchBean searchById(String name) {
+        return searchRepository.findById(name);
     }
 
     public List<SearchBean> searchWithPageable(Integer pageNum, Integer pageSize) {
@@ -26,19 +26,20 @@ public class SearchService {
         return searchRepository.findAllWithPageable(pageRequest).getContent();
     }
 
-    public List<SearchBean> searchWithHighlight(Integer pageNum, Integer pageSize) {
+    public List<SearchBean> searchWithHighlight(Integer pageNum, Integer pageSize,String item) {
         List<SearchBean> result = new ArrayList<>();
         PageRequest pageRequest = PageRequest.of(pageNum, pageSize);
-        HighlightPage<SearchBean> highlightPage = searchRepository.findWithHighlight(pageRequest);
+
+        HighlightPage<SearchBean> highlightPage = searchRepository.findWithHighlight(pageRequest,item);
         for (HighlightEntry<SearchBean> highlightEntry : highlightPage.getHighlighted()) {
             for (HighlightEntry.Highlight highlight : highlightEntry.getHighlights()) {
-                if (highlight.getField().equals("name")) {
-                    highlightEntry.getEntity().setName("");
+                if (highlight.getField().getName().equals("fun_describe")) {
+                    highlightEntry.getEntity().setFun_describe("");
                     String temp = "";
                     for (String sl : highlight.getSnipplets()) {
                         temp += sl;
                     }
-                    highlightEntry.getEntity().setName(temp);
+                    highlightEntry.getEntity().setFun_describe(temp);
                 }
             }
             result.add(highlightEntry.getEntity());
