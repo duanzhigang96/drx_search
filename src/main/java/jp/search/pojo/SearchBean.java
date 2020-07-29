@@ -9,21 +9,35 @@ import java.io.Serializable;
 @SolrDocument(solrCoreName="common")
 public class SearchBean implements Serializable {
 
+    //创建时间
+    @Field("creat")
+    String create;
+
+    //创建人
     @Field("create_user")
     String create_user;
 
+    //项目名
     @Field("project_name")
     String name;
 
+    //语言类型
     @Field("lan_type")
     String age;
 
+    //版本号
     @Field("version")
     String version;
 
+    //方法标题，关键字，分类
+    @Field("title")
+    String title;
+
+    //方法名
     @Field("fun_name")
     String fun_name;
 
+    //方法描述
     @Field("fun_describe")
     String fun_describe;
 

@@ -41,6 +41,14 @@ public class SearchService {
                     }
                     highlightEntry.getEntity().setFun_describe(temp);
                 }
+                if (highlight.getField().getName().equals("fun_exceptions")) {
+                    highlightEntry.getEntity().setFun_exceptions("");
+                    String temp = "";
+                    for (String sl : highlight.getSnipplets()) {
+                        temp += sl;
+                    }
+                    highlightEntry.getEntity().setFun_exceptions(temp);
+                }
             }
             result.add(highlightEntry.getEntity());
         }

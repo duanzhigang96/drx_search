@@ -2,6 +2,11 @@ package jp.search.reponsiory;
 
 import jp.search.Constants;
 import jp.search.pojo.SearchBean;
+import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocumentList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,11 +18,16 @@ import org.springframework.data.solr.core.query.SimpleHighlightQuery;
 import org.springframework.data.solr.core.query.result.HighlightPage;
 import org.springframework.stereotype.Repository;
 
+import java.io.IOException;
+
 @Repository
 public class SearchRepositoryImpl implements SearchRepository {
 
     @Autowired
     private SolrTemplate solrTemplate;
+
+    @Autowired
+    private SolrClient solrClient;
 
     @Override
     public SearchBean findById(String id) {
@@ -34,13 +44,17 @@ public class SearchRepositoryImpl implements SearchRepository {
     public HighlightPage<SearchBean> findWithHighlight(Pageable pageable,String item) {
 
         HighlightQuery query = new SimpleHighlightQuery();
-        HighlightOptions highlightOptions = new HighlightOptions().addField("fun_describe");
-        highlightOptions.setSimplePrefix("<em style='color:red'>");
-        highlightOptions.setSimplePostfix("</em>");
+        String[] searchField = {"fun_describe","fun_exceptions"};
+        HighlightOptions highlightOptions = new HighlightOptions().addField(searchField);
+        highlightOptions.setSimplePrefix("<span style='color:red'>");
+        highlightOptions.setSimplePostfix("</span>");
         query.setHighlightOptions(highlightOptions);
-        Criteria criteria = new Criteria("fun_describe").contains(item);
+
+        Criteria criteria = new Criteria("fun_exceptions").contains(item);
         query.addCriteria(criteria);
+
         HighlightPage<SearchBean> highlightPage = solrTemplate.queryForHighlightPage(Constants.SOLR_COLLECTION,query,SearchBean.class);
+
         return highlightPage;
     }
 }
