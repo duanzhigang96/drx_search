@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/bootstrap.css" />
     <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/js/search/search.js"></script>
+    <script type="text/javascript" src="/js/index/index.js"></script>
 </head>
 <body onscroll="scrollSearchContent()">
 <div id="search_title">
@@ -15,10 +15,26 @@
     </div>
     <div id="search_container" class="search_container">
         <div id="search-icon" class="search-icon"></div>
-        <input id="search_input" onfocus="searchReady()" class="search_input" placeholder="在 Google 上搜索，或者输入一个网址" autocomplete="off" tabindex="-1" type="url" aria-hidden="true">
+        <input id="search_input" oninput="searchReady()" autofocus="autofocus" onfocus="searchFocus()" onblur="searchBlur()" class="search_input" placeholder="在 Google 上搜索，或者输入一个网址" autocomplete="off" tabindex="-1" type="url" aria-hidden="true">
+    </div>
+</div>
+<div id="search_result" class="search_result" style="display: none">
+    <div style="position:relative;width: 100%; height: auto; margin-top: 80px">
+        <div id="result_body" class="result_body">
+            <!--            <span class="result_num">为您找到相关结果约43,000,000个</span>-->
+            <!--            <div id="result_item" class="result_item">-->
+            <!--                <a class="item_title">这是<span style="color: red">查询</span>内容title</a>-->
+            <!--                <div class="item_describe">-->
+            <!--                    <span>2020年7月28号&nbsp-&nbsp</span>-->
+            <!--                    sasdasssas<span style="color: red">fdhgsdff返回指定字符在此字符串中第一次出现处的索引。如果asfsadas返回指定字符sd返回指定字符在此字符串中第一次出现处的索引。如果asdsadsas返回指sd返回指定字符在此字符串中第一次出现处的索引。如果asdsadsas返回sd返回指定字符在此字符串中第一次出现处的索引。如果asdsadsassd返回指定字符在此字符串中第一次出现处的索引。如果asdsadsas返回指定字符在此字符串中第一次出现处的索引。如果ddasfdhgsdf返回指定字符在此字符串中第一次出现处的索引。如果ddasfdhgsdf指定字符在此字符串中第一次出现处的索引。如果ddasfdhgsdf定字符在此字符串中第一次出现处的索引。如果ddasfdhgsdf在此字符串中第一次出现处的索引。如果dasdsadsasdasfdhgsdffasfsadasdasdsa</span>dasdsasdasfdhgsdffasfsadasd返回指定字符在此字符串中第一次出现处的索引。如果asdsadsas返回指定字符在此字符串中第一次出现处的索引。如果ddasfdhgsdffasfs返回指定字符在此字符串中第一次出现处的索引。如果adasd返回指定字符在此字符串中第一次出现处的索引。如果as返回指定字符在此字符串中第一次出现处的索引。如果dsad返回指定字符在此字符串中第一次出现处的索引。如果sasdasfdhgs返回指定字符在此字符串中第一次出现处的索引。如果dffasfsadasdasdsadasfdhgsdffasfsadasdasdsadsasdasfdhgsdffasfsadasdasdsadsasdasfdhgsdffasfsadasdasdsadsasdasfdhgsdffasfsadasdasdsadasdasfdhgsdffasfsadasdasdsadfdhgsdffasfsadasdasdsad-->
+            <!--                </div>-->
+            <!--                <div class="item_author">这个是作者</div>-->
+            <!--            </div>-->
+        </div>
+
+        <div style="float: right; width: 35%;height: 200px;margin-top: 42px;border-left: 1px solid #e1e1e1;"></div>
 
     </div>
 </div>
-<div id="search_content" class="search_content" style="display: none"></div>
 </body>
 </html>
