@@ -15,6 +15,7 @@ import org.springframework.data.solr.core.query.Criteria;
 import org.springframework.data.solr.core.query.HighlightOptions;
 import org.springframework.data.solr.core.query.HighlightQuery;
 import org.springframework.data.solr.core.query.SimpleHighlightQuery;
+import org.springframework.data.solr.core.query.result.HighlightEntry;
 import org.springframework.data.solr.core.query.result.HighlightPage;
 import org.springframework.stereotype.Repository;
 
@@ -41,20 +42,18 @@ public class SearchRepositoryImpl implements SearchRepository {
     }
 
     @Override
-    public HighlightPage<SearchBean> findWithHighlight(Pageable pageable,String item) {
+    public HighlightPage<SearchBean> findWithHighlight(Pageable pageable, String item) {
 
         HighlightQuery query = new SimpleHighlightQuery();
-        String[] searchField = {"fun_describe","fun_exceptions"};
+        String searchField[] = {"fun_head", "fun_describe"};
         HighlightOptions highlightOptions = new HighlightOptions().addField(searchField);
         highlightOptions.setSimplePrefix("<span style='color:red'>");
         highlightOptions.setSimplePostfix("</span>");
         query.setHighlightOptions(highlightOptions);
-
-        Criteria criteria = new Criteria("fun_exceptions").contains(item);
+        Criteria criteria = new Criteria("fun_describe").is(item.replace(" ", ""));
+        criteria.and("fun_head").is(item.replace(" ", ""));
         query.addCriteria(criteria);
-
-        HighlightPage<SearchBean> highlightPage = solrTemplate.queryForHighlightPage(Constants.SOLR_COLLECTION,query,SearchBean.class);
-
+        HighlightPage<SearchBean> highlightPage = solrTemplate.queryForHighlightPage(Constants.SOLR_COLLECTION, query, SearchBean.class);
         return highlightPage;
     }
 }

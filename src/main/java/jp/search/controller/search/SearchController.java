@@ -20,8 +20,6 @@ public class SearchController {
     @Autowired
     private SearchService searchService;
 
-    private java.lang.Object Object;
-
     @RequestMapping("/getByIdFromSolr/{id}")
     public String getByIdFromSolr(@PathVariable("id") String id, ModelMap map) throws IOException, SolrServerException {
         SearchBean searchBean = searchService.searchById(id);

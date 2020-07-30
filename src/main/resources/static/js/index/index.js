@@ -45,7 +45,7 @@ function query() {
                 if (data.length > 0) {
                     for (var i = 0; i<data.length; i++) {
                         $("#result_body").append("<div id=\"result_item\" class=\"result_item\">\n" +
-                            "                <a class=\"item_title\" id='" + data[i].id + "' onclick='searchDetail(this)'>这是<span style=\"color: red\">查询</span>内容title</a>\n" +
+                            "                <a class=\"item_title\" id='" + data[i].id + "' onclick='searchDetail(this)'>"+data[i].fun_head+"</a>\n" +
                             "                <div class=\"item_describe\">\n" +
                             "                <span>" + data[i].version + "&nbsp-&nbsp</span>" + data[i].fun_describe +
                             "                </div>\n" +

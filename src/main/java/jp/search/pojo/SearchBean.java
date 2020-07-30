@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class SearchBean implements Serializable {
 
     //创建时间
-    @Field("creat")
+    @Field("create")
     String create;
 
     //创建人
@@ -30,8 +30,8 @@ public class SearchBean implements Serializable {
     String version;
 
     //方法标题，关键字，分类
-    @Field("title")
-    String title;
+    @Field("fun_head")
+    String fun_head;
 
     //方法名
     @Field("fun_name")
@@ -64,6 +64,22 @@ public class SearchBean implements Serializable {
 
     @Field("_version_")
     String _version_;
+
+    public String getCreate() {
+        return create;
+    }
+
+    public void setCreate(String create) {
+        this.create = create;
+    }
+
+    public String getFun_head() {
+        return fun_head;
+    }
+
+    public void setFun_head(String fun_head) {
+        this.fun_head = fun_head;
+    }
 
     public String getCreate_user() {
         return create_user;

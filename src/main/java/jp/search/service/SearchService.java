@@ -31,6 +31,7 @@ public class SearchService {
         PageRequest pageRequest = PageRequest.of(pageNum, pageSize);
 
         HighlightPage<SearchBean> highlightPage = searchRepository.findWithHighlight(pageRequest,item);
+
         for (HighlightEntry<SearchBean> highlightEntry : highlightPage.getHighlighted()) {
             for (HighlightEntry.Highlight highlight : highlightEntry.getHighlights()) {
                 if (highlight.getField().getName().equals("fun_describe")) {
@@ -41,13 +42,13 @@ public class SearchService {
                     }
                     highlightEntry.getEntity().setFun_describe(temp);
                 }
-                if (highlight.getField().getName().equals("fun_exceptions")) {
-                    highlightEntry.getEntity().setFun_exceptions("");
+                if (highlight.getField().getName().equals("fun_head")) {
+                    highlightEntry.getEntity().setFun_head("");
                     String temp = "";
                     for (String sl : highlight.getSnipplets()) {
                         temp += sl;
                     }
-                    highlightEntry.getEntity().setFun_exceptions(temp);
+                    highlightEntry.getEntity().setFun_head(temp);
                 }
             }
             result.add(highlightEntry.getEntity());

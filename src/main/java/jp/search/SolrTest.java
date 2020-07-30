@@ -3,13 +3,7 @@ package jp.search;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -64,14 +58,13 @@ public class SolrTest {
         XSSFRow row;
         String cell;
 
-        String[] insertInfo = {"create", "create_user", "project_name","lan_type", "version","title", "fun_name", "fun_describe", "fun_request_parm",
-        		"fun_request_detail", "fun_response_parm", "fun_response_detail", "fun_exceptions", "core","id"};
+        String[] insertInfo = {"create", "create_user", "project_name","lan_type", "version","fun_head", "fun_name", "fun_describe", "fun_request_parm",
+        		"fun_request_detail", "fun_response_parm", "fun_response_detail", "fun_exceptions", "core"};
 
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 
         TimeZone UTC = TimeZone.getTimeZone("UTC");
         SimpleDateFormat tmp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.CHINA);
-
 
         String time = format.format(new Date());
         Collection<SolrInputDocument> documents = new ArrayList<SolrInputDocument>();
