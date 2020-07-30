@@ -45,13 +45,15 @@ function query() {
                 if (data.length > 0) {
                     for (var i = 0; i<data.length; i++) {
                         $("#result_body").append("<div id=\"result_item\" class=\"result_item\">\n" +
-                            "                <a class=\"item_title\" id='" + data[i].id + "' onclick='searchDetail(this)'>"+data[i].fun_head+"</a>\n" +
+                            "                <a class=\"item_title\" href='/getByIdFromSolr/" + data[i].id + "'onclick=\"window.open(this.href);return false\">" + data[i].fun_head + "</a>\n" +
                             "                <div class=\"item_describe\">\n" +
-                            "                <span>" + data[i].version + "&nbsp-&nbsp</span>" + data[i].fun_describe +
+                            "                <span>" + data[i].create + "&nbsp-&nbsp</span>" + data[i].fun_describe +
                             "                </div>\n" +
                             "                <div class=\"item_author\">" + data[i].create_user + "</div>\n" +
                             "            </div>");
                     }
+                } else {
+                    $("#result_body").append("<div style='margin: 0 auto;width: 200px'><img src='/image/result_empty.png' /></div>");
                 }
             }
         });
@@ -91,6 +93,5 @@ function scrollSearchContent() {
 }
 
 function searchDetail(object) {
-    alert(object.id);
     window.location.href = "../getByIdFromSolr/" + object.id;
 }

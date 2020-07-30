@@ -103,10 +103,16 @@
     margin-bottom: 14px;
 }
 .item_title{
+    width: fit-content;
     font-size: 20px;
-    height: 30px;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     cursor: pointer;
+    /*文本一行显示超出省略*/
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 .item_describe{
     width: 100%;
@@ -121,4 +127,5 @@
 .item_author{
     height: 20px;
     line-height: 20px;
+    color: green;
 }

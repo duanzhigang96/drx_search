@@ -1,17 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title></title>
+    <link rel="stylesheet" href="/css/article.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
     <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/js/search_detail/search_detail.js"></script>
+    <!--code-->
+    <!--code-->
+    <link rel="stylesheet" href="/css/codemirror/codemirror.css">
+    <script src="/js/codemirror/codemirror.js"></script>
+    <script src="/js/codemirror/clike.js"></script>
+    <script src="/js/codemirror/emacs.js"></script>
+    <!--copy-->
+    <script src="/js/clipboard/clipboard.min.js"></script>
+
 </head>
 <script type="text/javascript">
-    document.ready(function () {
-        alert($searchBean.fun_describe);
-    })
 </script>
 <body>
-<div>$searchBean.fun_describe</div>
+<div style="background: whitesmoke">
+    <div style="margin: 0 100px">
+        <div id="result_content_box" class="result_content_box">
+            <!--header-->
+            <div id="article_header_box" class="article_header_box">
+                <div id="article_header" class="article_header">
+                    <div id="article_title_box" class="article_title_box">
+                        <span id="article_title" class="article_title" th:text="${searchBean.fun_head}"></span>
+                    </div>
+                    <div class="article_info_box">
+                        <!--                        <span th:text="${searchBean.create_user}"></span>-->
+                        <img class="article_type_img" src="https://csdnimg.cn/release/phoenix/template/new_img/original.png">
+                        <div>
+                            <span class="create_user" th:text="${searchBean.create_user}"></span>
+                            <!--                            <span class="time" th:text="${searchBean.create}"></span>-->
+                            <span class="time">2020/07/28</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--article body-->
+            <div class="article_body">
+                <!--article-->
+                <div class="article_box">
+                    <span>创建mRtcEngine实例时，我们实现在刷新或关闭前弹出弹框显示提示文字很容易，例：如果我们想要实现在刷新或关闭前调用某个方法就不行了，也许很多人尝试过了，使用如下方法：</span>
+                    <span th:text="${searchBean.fun_head}"></span>
+                </div>
+                <!--code-->
+                <form>
+                    <div id="copy_code" class="hljs-button {2} btn" data-clipboard-text="1" data-clipboard-action="copy" data-clipboard-target="#code" >复制</div>
+                    <textarea id="code" >
+private java.lang.Object Object;
+
+    @RequestMapping("/getByIdFromSolr/{id}")
+    @ResponseBody
+    public ModelAndView getByIdFromSolr(@PathVariable("id") String id) throws IOException, SolrServerException {111111111111111111111111111111111111111111111111111111111111111111
+        SearchBean searchBean = searchService.searchById(id);
+//        map.addObject(Constants.SEARCH_BEAN, searchBean);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("search_detail/search_detail");
+        modelAndView.addObject(Constants.SEARCH_BEAN, searchBean);
+        modelAndView.addObject("test", "success");
+        return modelAndView;
+    }
+                    </textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--    <div th:each="users:${searchBean}">-->
+    <!--        <li th:text="${searchBean.name}"></li>-->
+    <!--    </div>-->
+
+
+</div>
 </body>
 </html>

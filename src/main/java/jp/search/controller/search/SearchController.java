@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,10 +22,12 @@ public class SearchController {
     private SearchService searchService;
 
     @RequestMapping("/getByIdFromSolr/{id}")
-    public String getByIdFromSolr(@PathVariable("id") String id, ModelMap map) throws IOException, SolrServerException {
+    public ModelAndView getByIdFromSolr(@PathVariable("id") String id, ModelMap map) throws IOException, SolrServerException {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("search_detail/search_detail");
         SearchBean searchBean = searchService.searchById(id);
-        map.put(Constants.SEARCH_BEAN, searchBean);
-        return "search_detail/search_detail";
+        modelAndView.addObject(Constants.SEARCH_BEAN, searchBean);
+        return modelAndView;
     }
 
     @RequestMapping("/findWithAll/{item}")
