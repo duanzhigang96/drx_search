@@ -92,6 +92,16 @@ public class SolrTest {
         	}
         }
     }
+//添加索引存在则修改 不存在则添加
+    public static void add(){
+	    //创建连接
+    	 HttpSolrClient client = new HttpSolrClient("http://192.168.1.86:8983/solr/common", null, null, false);
+	    //创建document对象
+	 SolrInputDocument doc = new SolrInputDocument();
+	 doc.addField("id","c001");
+	 client.add(doc);
+	 client.commit
+    }
 
     public static void deleteFromCore(String strPath) throws SolrServerException, IOException{
 //      HttpSolrClient client = new HttpSolrClient("http://192.168.1.86:8983/solr/common", null, null, false);
