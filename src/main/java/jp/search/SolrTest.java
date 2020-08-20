@@ -21,10 +21,7 @@ import org.apache.solr.common.SolrInputDocument;
 
 public class SolrTest {
     public static void main(String[] args) throws IOException, SolrServerException {
-//        String urlString = args[0];
-
     	 File fileFolder = new File("D:/common/");
-
          // 検索フォルダ存在しない場合
          if (fileFolder == null || !fileFolder.exists()) {
              //Constants.LOG.fatal("CSVファイルを直接変換対象パスが存在しません。");
@@ -37,12 +34,11 @@ public class SolrTest {
         for (File f : flist) {
         	insertToCore(f.toString());
         }
-//        deleteFromCore("111");
         System.out.println("END");
     }
 
+    //插入索引
     public static void insertToCore(String strPath) throws SolrServerException, IOException{
-//        HttpSolrClient client = new HttpSolrClient("http://192.168.1.86:8983/solr/common", null, null, false);
 
         SolrClient solrClient=new HttpSolrClient.Builder("http://192.168.1.98:8983/solr/common").withConnectionTimeout(10000)
 				.withSocketTimeout(6000).build();
@@ -99,16 +95,11 @@ public class SolrTest {
 
     public static void deleteFromCore(String strPath) throws SolrServerException, IOException{
 //      HttpSolrClient client = new HttpSolrClient("http://192.168.1.86:8983/solr/common", null, null, false);
-
       SolrClient solrServer = new HttpSolrClient.Builder("http://192.168.1.98:8983/solr/commonApi").build();
 
-
       solrServer.deleteById("2");
-
       //提交修改
-
       solrServer.commit();
-
     }
 
     public void deleteDocumentByQuery() throws Exception {
@@ -127,11 +118,7 @@ public class SolrTest {
 
    }
 
-
   //查询索引
-
-
-
        public void queryIndex() throws Exception {
 
             //创建连接
@@ -179,8 +166,6 @@ public class SolrTest {
        }
 
      //复杂查询索引
-
-
        public void queryIndex2() throws Exception {
 
             //创建连接
@@ -270,9 +255,6 @@ public class SolrTest {
                       productName = (String) solrDocument.get("product_name");
 
                  }
-
-
-
                  System.out.println(productName);
 
                  System.out.println(solrDocument.get("product_price"));
@@ -280,8 +262,6 @@ public class SolrTest {
                  System.out.println(solrDocument.get("product_catalog_name"));
 
                  System.out.println(solrDocument.get("product_picture"));
-
-
 
             }
 
