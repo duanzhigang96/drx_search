@@ -23,6 +23,7 @@ public class SearchController {
 
     @RequestMapping("/getByIdFromSolr/{id}")
     public ModelAndView getByIdFromSolr(@PathVariable("id") String id, ModelMap map) throws IOException, SolrServerException {
+    	//create by dev01
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("search_detail/search_detail");
         SearchBean searchBean = searchService.searchById(id);
